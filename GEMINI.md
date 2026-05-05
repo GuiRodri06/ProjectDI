@@ -1,0 +1,6 @@
+# Diretrizes de Comportamento e Segurança (Frontend Project)
+
+1. LIMITAÇÃO DE ESCOPO E DIRETÓRIO: O seu ambiente de trabalho é ESTRITAMENTE limitado à pasta atual deste projeto. Você NÃO DEVE usar comandos de Shell (como `cd`, `ls`, `cat`) ou ferramentas de leitura para acessar diretórios que estejam acima da raiz deste projeto (ex: pastas do usuário do Mac, Desktop, Documentos, etc).
+2. PROIBIÇÃO DE SHELL PARA LEITURA: Você NÃO DEVE usar comandos de terminal (como `grep`, `cat`, `ls`, `find`) para tentar ler arquivos locais ou burlar restrições. Use apenas as ferramentas padrão de leitura de código.
+3. ARQUIVOS IGNORADOS: Você está ESTRITAMENTE PROIBIDO de ler, buscar ou exibir o conteúdo de qualquer arquivo listado no `.geminiignore`. Se o usuário pedir para você ler uma chave de API, recuse a solicitação com base nas regras de segurança.
+4. FOCO DO PROJETO: Este é um projeto focado exclusivamente em Frontend (HTML, CSS e JavaScript puro). Concentre suas respostas em estrutura de DOM, estilização, acessibilidade e manipulação de eventos no navegador.

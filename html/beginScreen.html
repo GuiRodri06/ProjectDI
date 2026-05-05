@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BetTrad - Modern Trading Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#1a1b26",
+                      "inverse-surface": "#2e3040",
+                      "on-error-container": "#991b1b",
+                      "on-secondary": "#ffffff",
+                      "surface": "#e8eaf0",
+                      "surface-container-high": "#dcdee4",
+                      "on-secondary-fixed-variant": "#404252",
+                      "inverse-primary": "#a5b4fc",
+                      "primary-fixed-dim": "#a5b4fc",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#e0e2ff",
+                      "surface-container-lowest": "#f0f2f8",
+                      "surface-dim": "#d4d6dc",
+                      "outline": "#8a8c9a",
+                      "on-tertiary-fixed": "#2e1065",
+                      "surface-tint": "#6366f1",
+                      "on-primary-fixed-variant": "#4338ca",
+                      "on-secondary-container": "#585a68",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#e8eaf0",
+                      "secondary": "#6c6e7e",
+                      "on-surface-variant": "#585a68",
+                      "error-container": "#fee2e2",
+                      "surface-bright": "#edeef4",
+                      "primary-container": "#818cf8",
+                      "on-surface": "#2e3040",
+                      "error": "#dc2626",
+                      "tertiary-fixed": "#ede9fe",
+                      "surface-container-low": "#e5e7ed",
+                      "secondary-fixed-dim": "#b8baca",
+                      "on-tertiary-container": "#3b1f63",
+                      "tertiary-fixed-dim": "#c4b5fd",
+                      "surface-variant": "#dcdee4",
+                      "secondary-container": "#d8dae6",
+                      "primary-fixed": "#e0e2ff",
+                      "on-error": "#ffffff",
+                      "on-background": "#2e3040",
+                      "tertiary-container": "#a78bfa",
+                      "surface-container": "#e2e4ea",
+                      "primary": "#6366f1",
+                      "secondary-fixed": "#d8dae6",
+                      "outline-variant": "#d0d2dc",
+                      "on-tertiary-fixed-variant": "#5b21b6",
+                      "on-primary-fixed": "#1e1b4b",
+                      "background": "#e8eaf0",
+                      "tertiary": "#7c3aed",
+                      "surface-container-highest": "#d6d8de"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.5rem",
+                      "lg": "1rem",
+                      "xl": "1.5rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "display": ["Plus Jakarta Sans"],
+                      "body": ["Plus Jakarta Sans"],
+                      "label": ["Plus Jakarta Sans"]
+              }
+            }
+          }
+        }
+    </script>
+<link rel="stylesheet" href="../css/beginScreen.css">
+</head>
+<body class="min-h-screen flex flex-col items-center overflow-x-hidden antialiased">
+<!-- TopNavBar -->
+<header class="sticky top-4 mx-auto w-[95%] rounded-2xl z-50 shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.6)] dark:shadow-none bg-[#e8eaf0] dark:bg-slate-900 font-['Plus_Jakarta_Sans'] font-medium text-slate-700 dark:text-slate-300">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-semibold text-slate-900 dark:text-white tracking-tight">BetTrad</div>
+<nav class="hidden md:flex gap-8">
+
+</nav>
+<button class="neomorphic-button bg-surface text-indigo-600 dark:text-indigo-400 font-semibold px-6 py-2.5 rounded-xl hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] transition-all duration-300 active:scale-95 transition-transform duration-200 hidden md:block">
+                About Us
+            </button>
+<!-- Mobile Menu Icon (Hidden on larger screens) -->
+<button class="md:hidden p-2 rounded-lg neomorphic-raised text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-6 flex flex-col items-center justify-center py-20 gap-24">
+<!-- Hero Section -->
+<section class="flex flex-col items-center text-center max-w-3xl space-y-10">
+<h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-on-surface neomorphic-inset px-12 py-8 rounded-[2rem] inline-block">
+                BetTrad
+            </h1>
+<p class="text-xl text-on-surface-variant font-medium max-w-2xl">
+                Experience the next generation of intuitive, tactile trading. Designed for seamless execution and profound clarity.
+            </p>
+<button class="neomorphic-button bg-surface text-primary font-bold text-xl px-10 py-5 rounded-2xl flex items-center gap-3 group">
+                Let's Start Trading
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+<!-- Features Bento Grid -->
+<section class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Feature 1 -->
+<div class="neomorphic-raised rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 group hover:neomorphic-inset transition-all duration-300">
+<div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-4xl" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<h3 class="font-semibold text-xl text-on-surface">Information on how the site works</h3>
+<p class="text-on-surface-variant text-sm mt-auto">Clear, step-by-step guides to mastering our platform effortlessly.</p>
+</div>
+<!-- Feature 2 -->
+<div class="neomorphic-raised rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 group hover:neomorphic-inset transition-all duration-300">
+<div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl" data-icon="groups" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<h3 class="font-semibold text-xl text-on-surface">How many users use the app</h3>
+<div class="mt-auto">
+<span class="text-3xl font-bold text-primary">2.4M+</span>
+<p class="text-on-surface-variant text-sm mt-2">Active traders worldwide.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="neomorphic-raised rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 group hover:neomorphic-inset transition-all duration-300">
+<div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-4xl" data-icon="stacked_line_chart" style="font-variation-settings: 'FILL' 1;">stacked_line_chart</span>
+</div>
+<h3 class="font-semibold text-xl text-on-surface">Active funds volume</h3>
+<div class="mt-auto">
+<span class="text-3xl font-bold text-tertiary">$14B+</span>
+<p class="text-on-surface-variant text-sm mt-2">Daily transaction volume.</p>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="neomorphic-raised rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 group hover:neomorphic-inset transition-all duration-300">
+<div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-4xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h3 class="font-semibold text-xl text-on-surface">Trustpilot customer reviews</h3>
+<div class="flex gap-1 text-emerald-500 mt-auto">
+<span class="material-symbols-outlined text-2xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-2xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-2xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-2xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-2xl" data-icon="star_half" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">4.8/5 Excellent</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-24 rounded-t-[40px] shadow-[inset_6px_6px_12px_rgba(0,0,0,0.05),inset_-6px_-6px_12px_rgba(255,255,255,0.4)] dark:shadow-none bg-[#e8eaf0] dark:bg-slate-950 font-['Plus_Jakarta_Sans'] text-sm text-slate-500 dark:text-slate-400">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 max-w-7xl mx-auto gap-8">
+<div class="text-xl font-semibold text-slate-900 dark:text-white">BetTrad</div>
+<nav class="flex gap-6 flex-wrap justify-center">
+<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 hover:text-indigo-600 transition-colors cursor-pointer" href="#">Terms</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 hover:text-indigo-600 transition-colors cursor-pointer" href="#">Privacy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 hover:text-indigo-600 transition-colors cursor-pointer" href="#">Support</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 hover:text-indigo-600 transition-colors cursor-pointer" href="#">Contact</a>
+</nav>
+<div class="text-slate-500 dark:text-slate-400">
+                © 2026 BetTrad. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>
