@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BetTrad - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#e8eaf0",
+                        "secondary": "#6c6e7e",
+                        "on-secondary-fixed": "#1a1b26",
+                        "primary-fixed-dim": "#a5b4fc",
+                        "on-tertiary-fixed-variant": "#5b21b6",
+                        "on-primary-container": "#e0e2ff",
+                        "inverse-primary": "#a5b4fc",
+                        "surface-container-highest": "#d6d8de",
+                        "on-tertiary-container": "#3b1f63",
+                        "secondary-container": "#d8dae6",
+                        "surface-tint": "#6366f1",
+                        "secondary-fixed": "#d8dae6",
+                        "on-primary-fixed-variant": "#4338ca",
+                        "on-secondary-container": "#585a68",
+                        "primary": "#6366f1",
+                        "on-surface": "#2e3040",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#dcdee4",
+                        "surface-container-lowest": "#f0f2f8",
+                        "surface-bright": "#edeef4",
+                        "on-error-container": "#991b1b",
+                        "on-tertiary-fixed": "#2e1065",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e2e4ea",
+                        "surface-container-high": "#dcdee4",
+                        "primary-fixed": "#e0e2ff",
+                        "on-primary-fixed": "#1e1b4b",
+                        "surface-dim": "#d4d6dc",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#b8baca",
+                        "outline-variant": "#d0d2dc",
+                        "tertiary": "#7c3aed",
+                        "error-container": "#fee2e2",
+                        "on-tertiary": "#ffffff",
+                        "error": "#dc2626",
+                        "tertiary-fixed": "#ede9fe",
+                        "tertiary-container": "#a78bfa",
+                        "primary-container": "#818cf8",
+                        "on-secondary-fixed-variant": "#404252",
+                        "surface": "#e8eaf0",
+                        "surface-container-low": "#e5e7ed",
+                        "on-background": "#2e3040",
+                        "tertiary-fixed-dim": "#c4b5fd",
+                        "on-surface-variant": "#585a68",
+                        "outline": "#8a8c9a",
+                        "inverse-surface": "#2e3040",
+                        "inverse-on-surface": "#e8eaf0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+<link rel="stylesheet" href="../css/homePage.css">
+</head>
+<body class="font-body text-on-surface min-h-screen antialiased bg-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-[#e8eaf0] dark:bg-[#1a1c23] text-indigo-600 dark:text-indigo-400 font-['Plus_Jakarta_Sans'] font-medium text-slate-700 dark:text-slate-200 w-full sticky top-0 z-50 shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.6)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
+<!-- Brand -->
+<div class="text-xl font-semibold tracking-tight text-indigo-600 dark:text-indigo-400">
+                BetTrad
+            </div>
+<!-- Navigation Links (Centered) -->
+<div class="hidden md:flex items-center justify-center space-x-2">
+<a class="text-indigo-600 dark:text-indigo-400 shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] rounded-xl px-4 py-2 hover:shadow-[inset_2px_2px_5px_rgba(0,0,0,0.05),inset_-2px_-2px_5px_rgba(255,255,255,0.4)] active:scale-95 transition-all duration-200 ease-out flex-col flex items-center justify-center" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span></a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-2 hover:text-indigo-500 transition-colors hover:shadow-[inset_2px_2px_5px_rgba(0,0,0,0.05),inset_-2px_-2px_5px_rgba(255,255,255,0.4)] rounded-xl active:scale-95 transition-all duration-200 ease-out flex-col flex items-center justify-center" href="#"><span class="material-symbols-outlined">search</span></a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-2 hover:text-indigo-500 transition-colors hover:shadow-[inset_2px_2px_5px_rgba(0,0,0,0.05),inset_-2px_-2px_5px_rgba(255,255,255,0.4)] rounded-xl active:scale-95 transition-all duration-200 ease-out flex-col flex items-center justify-center" href="#"><span class="material-symbols-outlined">info</span></a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-2 hover:text-indigo-500 transition-colors hover:shadow-[inset_2px_2px_5px_rgba(0,0,0,0.05),inset_-2px_-2px_5px_rgba(255,255,255,0.4)] rounded-xl active:scale-95 transition-all duration-200 ease-out flex-col flex items-center justify-center" href="#"><span class="material-symbols-outlined">settings</span></a>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center space-x-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center neo-raised text-primary hover:text-tertiary transition-colors active:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-3xl mx-auto px-6 py-12 space-y-16">
+<!-- Account Value Section -->
+<section class="flex flex-col items-center justify-center space-y-6">
+<div class="flex flex-col items-center space-y-2">
+<h2 class="text-sm font-medium text-secondary uppercase tracking-wider">Account Value</h2>
+<div class="text-5xl font-bold text-on-surface tracking-tight bg-background neo-raised rounded-3xl py-6 px-10">
+                    € 700.75
+                </div>
+</div>
+<button class="flex items-center justify-center space-x-2 bg-background neo-raised rounded-full px-8 py-3 font-semibold text-primary hover:text-tertiary transition-all active:neo-inset transform active:scale-95">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span>Deposit Funds</span>
+</button>
+</section><!-- Price Chart Section -->
+<section class="space-y-6">
+<div class="bg-background neo-raised rounded-3xl p-6 space-y-8">
+<!-- Time Range Selector -->
+<div class="flex items-center justify-between px-2">
+<div class="flex space-x-2 w-full justify-between">
+<button class="px-3 py-2 text-xs font-bold text-secondary neo-raised rounded-xl active:scale-95 transition-all">1D</button>
+<button class="px-3 py-2 text-xs font-bold text-secondary neo-raised rounded-xl active:scale-95 transition-all">1W</button>
+<button class="px-3 py-2 text-xs font-bold text-primary neo-inset rounded-xl active:scale-95 transition-all">1M</button>
+<button class="px-3 py-2 text-xs font-bold text-secondary neo-raised rounded-xl active:scale-95 transition-all">3M</button>
+<button class="px-3 py-2 text-xs font-bold text-secondary neo-raised rounded-xl active:scale-95 transition-all">1Y</button>
+<button class="px-3 py-2 text-xs font-bold text-secondary neo-raised rounded-xl active:scale-95 transition-all">MAX</button>
+</div>
+</div>
+<!-- Graph Area -->
+<div class="relative h-48 w-full flex items-end px-2 overflow-hidden">
+<!-- Simulated SVG Graph -->
+<svg class="w-full h-full drop-shadow-[0_4px_8px_rgba(99,102,241,0.3)]" preserveaspectratio="none" viewbox="0 0 400 100">
+<defs>
+<lineargradient id="graphGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#6366f1" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#6366f1" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 80 Q 50 85, 80 60 T 150 50 T 220 70 T 300 30 T 400 10" fill="none" stroke="#6366f1" stroke-linecap="round" stroke-width="3"></path>
+<path d="M0 80 Q 50 85, 80 60 T 150 50 T 220 70 T 300 30 T 400 10 V 100 H 0 Z" fill="url(#graphGradient)"></path>
+</svg>
+<!-- Indicator Dot -->
+<div class="absolute right-2 top-[10%] w-3 h-3 bg-primary border-2 border-background rounded-full shadow-[0_0_8px_#6366f1]"></div>
+</div>
+</div>
+</section>
+<!-- Investments Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-xl font-semibold text-on-surface">My Investments</h3>
+<button class="w-8 h-8 rounded-full flex items-center justify-center neo-raised text-secondary hover:text-primary transition-colors active:neo-inset">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Asset Card: Apple -->
+<div class="flex items-center justify-between bg-background neo-raised rounded-2xl p-4 cursor-pointer hover:shadow-[6px_6px_16px_rgba(0,0,0,0.1),-6px_-6px_16px_rgba(255,255,255,0.7)] transition-shadow">
+    <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-background neo-inset flex items-center justify-center text-primary">
+            <!-- Substituição do ícone pela imagem do logo -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Apple Logo" class="w-6 h-6 object-contain">
+        </div>
+        <div class="flex flex-col">
+            <span class="font-semibold text-on-surface text-lg">Apple</span>
+            <span class="text-sm text-secondary">AAPL</span>
+        </div>
+    </div>
+    <div class="font-bold text-on-surface text-lg pr-2">
+        €250.70
+    </div>
+</div>
+<!-- Asset Card: Bitcoin -->
+<div class="flex items-center justify-between bg-background neo-raised rounded-2xl p-4 cursor-pointer hover:shadow-[6px_6px_16px_rgba(0,0,0,0.1),-6px_-6px_16px_rgba(255,255,255,0.7)] transition-shadow">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-xl bg-background neo-inset flex items-center justify-center text-[#F7931A]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">currency_bitcoin</span>
+</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface text-lg">Bitcoin</span>
+<span class="text-sm text-secondary">BTC</span>
+</div>
+</div>
+<div class="font-bold text-on-surface text-lg pr-2">
+                        €100.05
+                    </div>
+</div>
+<!-- Asset Card: S&P500 -->
+<div class="flex items-center justify-between bg-background neo-raised rounded-2xl p-4 cursor-pointer hover:shadow-[6px_6px_16px_rgba(0,0,0,0.1),-6px_-6px_16px_rgba(255,255,255,0.7)] transition-shadow">
+    <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-background neo-inset flex items-center justify-center text-tertiary">
+            <!-- Substitui o 'O_TEU_URL_AQUI' pelo link da imagem -->
+            <img src="https://s3-symbol-logo.tradingview.com/indices/s-and-p-500--600.png" alt="S&P 500 Logo" class="w-6 h-6 object-contain">
+        </div>
+        <div class="flex flex-col">
+            <span class="font-semibold text-on-surface text-lg">S&amp;P500</span>
+            <span class="text-sm text-secondary">Index</span>
+        </div>
+    </div>
+    <div class="font-bold text-on-surface text-lg pr-2">
+        €350.00
+    </div>
+</div>
+</div>
+</section>
+</main>
+</body></html>
