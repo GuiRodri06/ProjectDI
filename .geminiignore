@@ -1,0 +1,15 @@
+# Arquivos de configuração de ambiente (caso você use chaves de API do Google Maps, Firebase, etc.)
+**/.env
+**/.env.*
+
+# Dependências (Obrigatório se você usar NPM/Yarn para não travar a IA tentando ler milhares de arquivos)
+**/node_modules/
+
+# Pastas de Build/Compilação (Se você usar Vite, Webpack, etc.)
+**/dist/
+**/build/
+**/.out/
+
+# Arquivos do sistema e Git
+**/.DS_Store
+**/.git/
