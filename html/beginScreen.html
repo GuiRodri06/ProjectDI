@@ -1,179 +1,567 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>BetTrad — Modern 3D Trading Platform</title>
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>BetTrad - Modern Trading Platform</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "on-secondary-fixed": "#1a1b26",
-                      "inverse-surface": "#2e3040",
-                      "on-error-container": "#991b1b",
-                      "on-secondary": "#ffffff",
-                      "surface": "#e8eaf0",
-                      "surface-container-high": "#dcdee4",
-                      "on-secondary-fixed-variant": "#404252",
-                      "inverse-primary": "#a5b4fc",
-                      "primary-fixed-dim": "#a5b4fc",
-                      "on-tertiary": "#ffffff",
-                      "on-primary-container": "#e0e2ff",
-                      "surface-container-lowest": "#f0f2f8",
-                      "surface-dim": "#d4d6dc",
-                      "outline": "#8a8c9a",
-                      "on-tertiary-fixed": "#2e1065",
-                      "surface-tint": "#6366f1",
-                      "on-primary-fixed-variant": "#4338ca",
-                      "on-secondary-container": "#585a68",
-                      "on-primary": "#ffffff",
-                      "inverse-on-surface": "#e8eaf0",
-                      "secondary": "#6c6e7e",
-                      "on-surface-variant": "#585a68",
-                      "error-container": "#fee2e2",
-                      "surface-bright": "#edeef4",
-                      "primary-container": "#818cf8",
-                      "on-surface": "#2e3040",
-                      "error": "#dc2626",
-                      "tertiary-fixed": "#ede9fe",
-                      "surface-container-low": "#e5e7ed",
-                      "secondary-fixed-dim": "#b8baca",
-                      "on-tertiary-container": "#3b1f63",
-                      "tertiary-fixed-dim": "#c4b5fd",
-                      "surface-variant": "#dcdee4",
-                      "secondary-container": "#d8dae6",
-                      "primary-fixed": "#e0e2ff",
-                      "on-error": "#ffffff",
-                      "on-background": "#2e3040",
-                      "tertiary-container": "#a78bfa",
-                      "surface-container": "#e2e4ea",
-                      "primary": "#6366f1",
-                      "secondary-fixed": "#d8dae6",
-                      "outline-variant": "#d0d2dc",
-                      "on-tertiary-fixed-variant": "#5b21b6",
-                      "on-primary-fixed": "#1e1b4b",
-                      "background": "#e8eaf0",
-                      "tertiary": "#7c3aed",
-                      "surface-container-highest": "#d6d8de"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.5rem",
-                      "lg": "1rem",
-                      "xl": "1.5rem",
-                      "full": "9999px"
-              },
-              "fontFamily": {
-                      "headline": ["Plus Jakarta Sans"],
-                      "display": ["Plus Jakarta Sans"],
-                      "body": ["Plus Jakarta Sans"],
-                      "label": ["Plus Jakarta Sans"]
-              }
-            }
-          }
-        }
-    </script>
-<link rel="stylesheet" href="../css/beginScreen.css">
-</head>
-<body class="min-h-screen flex flex-col items-center overflow-x-hidden antialiased">
-<!-- TopNavBar -->
-<header class="sticky top-4 mx-auto w-[95%] rounded-2xl z-50 shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.6)] dark:shadow-none bg-[#e8eaf0] dark:bg-slate-900 font-['Plus_Jakarta_Sans'] font-medium text-slate-700 dark:text-slate-300">
-<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-<div class="text-2xl font-semibold text-slate-900 dark:text-white tracking-tight">BetTrad</div>
-<nav class="hidden md:flex gap-8">
 
-</nav>
-<button class="neomorphic-button bg-surface text-indigo-600 dark:text-indigo-400 font-semibold px-6 py-2.5 rounded-xl hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] transition-all duration-300 active:scale-95 transition-transform duration-200 hidden md:block">
-                About Us
-            </button>
-<!-- Mobile Menu Icon (Hidden on larger screens) -->
-<button class="md:hidden p-2 rounded-lg neomorphic-raised text-on-surface-variant flex items-center justify-center">
-<span class="material-symbols-outlined" data-icon="menu">menu</span>
-</button>
-</div>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: { fontFamily: { headline: ["Plus Jakarta Sans"], body: ["Plus Jakarta Sans"] } } },
+  };
+</script>
+
+<style>
+  :root {
+    --surface: #e8eaf0;
+    --surface-2: #d4d6dc;
+    --on-surface: #2e3040;
+    --on-surface-variant: #585a68;
+    --shadow-dark: rgba(0, 0, 0, 0.10);
+    --shadow-light: rgba(255, 255, 255, 0.75);
+    --primary: #6366f1;
+    --tertiary: #7c3aed;
+  }
+  html.dark {
+    --surface: #14151c;
+    --surface-2: #1c1d26;
+    --on-surface: #e7e9f3;
+    --on-surface-variant: #a8aabb;
+    --shadow-dark: rgba(0, 0, 0, 0.55);
+    --shadow-light: rgba(70, 72, 90, 0.35);
+  }
+
+  html, body {
+    background-color: var(--surface);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: var(--on-surface);
+    overflow-x: hidden;
+    transition: background-color .6s ease, color .6s ease;
+  }
+
+  /* Three.js canvas behind everything */
+  #bg-canvas {
+    position: fixed; inset: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+  }
+  main, header, footer { position: relative; z-index: 1; }
+
+  /* Cursor glow */
+  #cursor-glow {
+    position: fixed;
+    width: 480px; height: 480px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(99,102,241,.18), rgba(124,58,237,.08) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    transition: opacity .4s ease;
+    mix-blend-mode: screen;
+    filter: blur(20px);
+  }
+  html.dark #cursor-glow {
+    background: radial-gradient(circle, rgba(99,102,241,.35), rgba(124,58,237,.18) 40%, transparent 70%);
+  }
+
+  /* ========= Neomorphism ========= */
+  .neomorphic-raised {
+    background-color: var(--surface);
+    box-shadow: 8px 8px 18px var(--shadow-dark), -8px -8px 18px var(--shadow-light);
+  }
+  .neomorphic-inset {
+    background-color: var(--surface);
+    box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+  }
+  .neomorphic-button {
+    background-color: var(--surface);
+    color: var(--primary);
+    box-shadow: 8px 8px 18px var(--shadow-dark), -8px -8px 18px var(--shadow-light);
+    transition: box-shadow .25s ease, transform .15s ease, color .25s ease;
+    transform-style: preserve-3d;
+  }
+  .neomorphic-button:active {
+    box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+    transform: scale(.97);
+  }
+
+  /* ========= 3D card tilt ========= */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(900px) rotateX(0) rotateY(0);
+    transition: transform .15s ease-out, box-shadow .3s ease;
+    will-change: transform;
+    position: relative;
+  }
+  .tilt-card .tilt-inner > * {
+    transform: translateZ(40px);
+    transition: transform .3s ease;
+  }
+  .tilt-card:hover {
+    box-shadow: 14px 14px 28px var(--shadow-dark), -14px -14px 28px var(--shadow-light);
+  }
+  .tilt-card .glare {
+    position: absolute; inset: 0; border-radius: inherit;
+    background: radial-gradient(circle at var(--mx,50%) var(--my,50%),
+      rgba(255,255,255,.55), rgba(255,255,255,0) 55%);
+    opacity: 0; transition: opacity .3s ease; pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+  html.dark .tilt-card .glare {
+    background: radial-gradient(circle at var(--mx,50%) var(--my,50%),
+      rgba(165,180,252,.30), rgba(0,0,0,0) 55%);
+  }
+  .tilt-card:hover .glare { opacity: 1; }
+
+  /* ========= Hero 3D title ========= */
+  .hero-title {
+    transform-style: preserve-3d;
+    perspective: 1200px;
+    display: inline-block;
+    animation: float 6s ease-in-out infinite;
+    text-shadow:
+      1px 1px 0 #cfd1d9,
+      2px 2px 0 #c4c6ce,
+      3px 3px 0 #b9bbc3,
+      4px 4px 0 #aeb0b8,
+      5px 6px 18px rgba(99,102,241,.25);
+  }
+  html.dark .hero-title {
+    text-shadow:
+      1px 1px 0 #2a2c38,
+      2px 2px 0 #232531,
+      3px 3px 0 #1d1e29,
+      4px 4px 0 #181922,
+      5px 6px 24px rgba(99,102,241,.55);
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0) rotateX(0); }
+    50%     { transform: translateY(-10px) rotateX(4deg); }
+  }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Grain */
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: 0.04;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>');
+  }
+  html.dark body::after { opacity: 0.06; }
+
+  ::selection { background: rgba(99,102,241,.35); }
+
+  /* Theme toggle ring */
+  .theme-toggle .material-symbols-outlined { transition: transform .5s cubic-bezier(.4,2,.4,1); }
+  .theme-toggle:hover .material-symbols-outlined { transform: rotate(45deg); }
+</style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center antialiased">
+
+<canvas id="bg-canvas" data-testid="three-bg-canvas"></canvas>
+<div id="cursor-glow" data-testid="cursor-glow"></div>
+
+<header class="sticky top-4 mx-auto w-[95%] rounded-2xl mt-4 neomorphic-raised font-medium" style="color: var(--on-surface-variant);">
+  <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+    <div class="text-2xl font-bold tracking-tight" style="color: var(--on-surface);" data-testid="logo">BetTrad</div>
+    <nav class="hidden md:flex gap-8"></nav>
+
+    <div class="flex items-center gap-3">
+      <button data-testid="theme-toggle" id="theme-toggle"
+        class="theme-toggle neomorphic-button p-2.5 rounded-xl flex items-center justify-center" aria-label="Toggle theme">
+        <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+      </button>
+      <button data-testid="about-btn"
+        class="neomorphic-button font-semibold px-6 py-2.5 rounded-xl hidden md:block">
+        About Us
+      </button>
+      <button data-testid="mobile-menu-btn"
+        class="md:hidden p-2 rounded-lg neomorphic-raised flex items-center justify-center" style="color: var(--on-surface-variant);">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
 </header>
-<!-- Main Content -->
+
 <main class="flex-grow w-full max-w-7xl mx-auto px-6 flex flex-col items-center justify-center py-20 gap-24">
-<!-- Hero Section -->
-<section class="flex flex-col items-center text-center max-w-3xl space-y-10">
-<h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-on-surface neomorphic-inset px-12 py-8 rounded-[2rem] inline-block">
-                BetTrad
-            </h1>
-<p class="text-xl text-on-surface-variant font-medium max-w-2xl">
-                Experience the next generation of intuitive, tactile trading. Designed for seamless execution and profound clarity.
-            </p>
-<button onclick="window.location.href='homePage.html'" class="neomorphic-button bg-surface text-primary font-bold text-xl px-10 py-5 rounded-2xl flex items-center gap-3 group">
-    Let's Start Trading
-    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-</button>
-</section>
-<!-- Features Bento Grid -->
-<section class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Feature 1 -->
-<div class="neomorphic-raised rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 group hover:neomorphic-inset transition-all duration-300">
-<div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-tertiary">
-<span class="material-symbols-outlined text-4xl" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
-</div>
-<h3 class="font-semibold text-xl text-on-surface">Information on how the site works</h3>
-<p class="text-on-surface-variant text-sm mt-auto">Clear, step-by-step guides to mastering our platform effortlessly.</p>
-</div>
-<!-- Feature 2 -->
-<div class="neomorphic-raised rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 group hover:neomorphic-inset transition-all duration-300">
-<div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-4xl" data-icon="groups" style="font-variation-settings: 'FILL' 1;">groups</span>
-</div>
-<h3 class="font-semibold text-xl text-on-surface">How many users use the app</h3>
-<div class="mt-auto">
-<span class="text-3xl font-bold text-primary">2.4M+</span>
-<p class="text-on-surface-variant text-sm mt-2">Active traders worldwide.</p>
-</div>
-</div>
-<!-- Feature 3 -->
-<div class="neomorphic-raised rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 group hover:neomorphic-inset transition-all duration-300">
-<div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-tertiary">
-<span class="material-symbols-outlined text-4xl" data-icon="stacked_line_chart" style="font-variation-settings: 'FILL' 1;">stacked_line_chart</span>
-</div>
-<h3 class="font-semibold text-xl text-on-surface">Active funds volume</h3>
-<div class="mt-auto">
-<span class="text-3xl font-bold text-tertiary">$14B+</span>
-<p class="text-on-surface-variant text-sm mt-2">Daily transaction volume.</p>
-</div>
-</div>
-<!-- Feature 4 -->
-<div class="neomorphic-raised rounded-[2rem] p-8 flex flex-col items-center text-center gap-6 group hover:neomorphic-inset transition-all duration-300">
-<div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-emerald-500">
-<span class="material-symbols-outlined text-4xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-<h3 class="font-semibold text-xl text-on-surface">Trustpilot customer reviews</h3>
-<div class="flex gap-1 text-emerald-500 mt-auto">
-<span class="material-symbols-outlined text-2xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-2xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-2xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-2xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined text-2xl" data-icon="star_half" style="font-variation-settings: 'FILL' 1;">star_half</span>
-</div>
-<p class="text-on-surface-variant text-sm font-medium">4.8/5 Excellent</p>
-</div>
-</section>
+
+  <section class="flex flex-col items-center text-center max-w-3xl space-y-10 reveal">
+    <h1 class="hero-title text-6xl md:text-8xl font-extrabold tracking-tighter neomorphic-inset px-12 py-8 rounded-[2rem]" data-testid="hero-title">
+      BetTrad
+    </h1>
+    <p class="text-xl md:text-2xl font-bold max-w-2xl reveal neomorphic-inset px-10 py-8 rounded-[2rem] leading-relaxed" style="color: var(--on-surface-variant);" data-testid="hero-subtitle">
+      Experience the next generation of intuitive, tactile trading. Designed for seamless execution and profound clarity.
+    </p>
+    <button id="cta-btn" onclick="window.location.href='homePage.html'"
+      data-testid="start-trading-btn"
+      class="neomorphic-button font-bold text-xl px-10 py-5 rounded-2xl flex items-center gap-3 group">
+      Let's Start Trading
+      <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+    </button>
+  </section>
+
+  <section class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-testid="features-grid">
+
+    <div class="tilt-card neomorphic-raised rounded-[2rem] p-8 overflow-hidden reveal" data-testid="feature-howitworks">
+      <div class="tilt-inner flex flex-col items-center text-center gap-6">
+        <div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-violet-600 dark:text-violet-400">
+          <span class="material-symbols-outlined text-4xl" style="font-variation-settings:'FILL' 1;">lightbulb</span>
+        </div>
+        <h3 class="font-semibold text-xl" style="color: var(--on-surface);">How the platform works</h3>
+        <p class="text-sm" style="color: var(--on-surface-variant);">Clear, step-by-step guides to mastering our platform effortlessly.</p>
+      </div>
+      <div class="glare"></div>
+    </div>
+
+    <div class="tilt-card neomorphic-raised rounded-[2rem] p-8 overflow-hidden reveal" data-testid="feature-users">
+      <div class="tilt-inner flex flex-col items-center text-center gap-6">
+        <div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+          <span class="material-symbols-outlined text-4xl" style="font-variation-settings:'FILL' 1;">groups</span>
+        </div>
+        <h3 class="font-semibold text-xl" style="color: var(--on-surface);">Active community</h3>
+        <div>
+          <span class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 counter" data-target="2400000" data-suffix="+" data-format="compact" data-testid="users-count">0</span>
+          <p class="text-sm mt-2" style="color: var(--on-surface-variant);">Active traders worldwide.</p>
+        </div>
+      </div>
+      <div class="glare"></div>
+    </div>
+
+    <div class="tilt-card neomorphic-raised rounded-[2rem] p-8 overflow-hidden reveal" data-testid="feature-volume">
+      <div class="tilt-inner flex flex-col items-center text-center gap-6">
+        <div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-violet-600 dark:text-violet-400">
+          <span class="material-symbols-outlined text-4xl" style="font-variation-settings:'FILL' 1;">stacked_line_chart</span>
+        </div>
+        <h3 class="font-semibold text-xl" style="color: var(--on-surface);">Active funds volume</h3>
+        <div>
+          <span class="text-3xl font-bold text-violet-600 dark:text-violet-400 counter" data-target="14000000000" data-prefix="$" data-suffix="+" data-format="compact" data-testid="volume-amount">$0</span>
+          <p class="text-sm mt-2" style="color: var(--on-surface-variant);">Daily transaction volume.</p>
+        </div>
+      </div>
+      <div class="glare"></div>
+    </div>
+
+    <div class="tilt-card neomorphic-raised rounded-[2rem] p-8 overflow-hidden reveal" data-testid="feature-reviews">
+      <div class="tilt-inner flex flex-col items-center text-center gap-6">
+        <div class="w-20 h-20 rounded-full neomorphic-inset flex items-center justify-center text-emerald-500">
+          <span class="material-symbols-outlined text-4xl" style="font-variation-settings:'FILL' 1;">star</span>
+        </div>
+        <h3 class="font-semibold text-xl" style="color: var(--on-surface);">Trustpilot reviews</h3>
+        <div class="flex gap-1 text-emerald-500">
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 1;">star_half</span>
+        </div>
+        <p class="text-sm font-medium counter-rating" style="color: var(--on-surface-variant);" data-testid="reviews-rating">0.0/5 Excellent</p>
+      </div>
+      <div class="glare"></div>
+    </div>
+  </section>
 </main>
-<!-- Footer -->
-<footer class="w-full mt-24 rounded-t-[40px] shadow-[inset_6px_6px_12px_rgba(0,0,0,0.05),inset_-6px_-6px_12px_rgba(255,255,255,0.4)] dark:shadow-none bg-[#e8eaf0] dark:bg-slate-950 font-['Plus_Jakarta_Sans'] text-sm text-slate-500 dark:text-slate-400">
-<div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 max-w-7xl mx-auto gap-8">
-<div class="text-xl font-semibold text-slate-900 dark:text-white">BetTrad</div>
-<nav class="flex gap-6 flex-wrap justify-center">
-<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 hover:text-indigo-600 transition-colors cursor-pointer" href="#">Terms</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 hover:text-indigo-600 transition-colors cursor-pointer" href="#">Privacy</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 hover:text-indigo-600 transition-colors cursor-pointer" href="#">Support</a>
-<a class="text-slate-500 dark:text-slate-400 hover:text-indigo-500 hover:text-indigo-600 transition-colors cursor-pointer" href="#">Contact</a>
-</nav>
-<div class="text-slate-500 dark:text-slate-400">
-                © 2026 BetTrad. All rights reserved.
-            </div>
-</div>
+
+<footer class="w-full mt-24 rounded-t-[40px] neomorphic-inset font-body text-sm" style="color: var(--on-surface-variant);">
+  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 max-w-7xl mx-auto gap-8">
+    <div class="text-xl font-semibold" style="color: var(--on-surface);">BetTrad</div>
+    <nav class="flex gap-6 flex-wrap justify-center">
+      <a class="hover:text-indigo-500 transition-colors cursor-pointer" href="#">Terms</a>
+      <a class="hover:text-indigo-500 transition-colors cursor-pointer" href="#">Privacy</a>
+      <a class="hover:text-indigo-500 transition-colors cursor-pointer" href="#">Support</a>
+      <a class="hover:text-indigo-500 transition-colors cursor-pointer" href="#">Contact</a>
+    </nav>
+    <div>© 2026 BetTrad. All rights reserved.</div>
+  </div>
 </footer>
-</body></html>
+
+<script type="module">
+  import * as THREE from "three";
+
+  const canvas = document.getElementById("bg-canvas");
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+  const FOG_LIGHT = new THREE.Color(0xe8eaf0);
+  const FOG_DARK  = new THREE.Color(0x14151c);
+  scene.fog = new THREE.Fog(FOG_LIGHT, 8, 32);
+
+  const camera = new THREE.PerspectiveCamera(55, window.innerWidth/window.innerHeight, 0.1, 100);
+  camera.position.set(0, 0, 12);
+
+  // Lights
+  const ambient = new THREE.AmbientLight(0xffffff, 0.85); scene.add(ambient);
+  const keyLight = new THREE.DirectionalLight(0xffffff, 1.1); keyLight.position.set(6,8,6); scene.add(keyLight);
+  const fillIndigo = new THREE.PointLight(0x6366f1, 1.4, 30); fillIndigo.position.set(-6,-3,4); scene.add(fillIndigo);
+  const fillViolet = new THREE.PointLight(0x7c3aed, 1.0, 30); fillViolet.position.set(7,-4,-4); scene.add(fillViolet);
+
+  // Materials
+  const matIndigo  = new THREE.MeshStandardMaterial({ color: 0x8a92ff, metalness: .35, roughness: .35 });
+  const matViolet  = new THREE.MeshStandardMaterial({ color: 0xb39dff, metalness: .4,  roughness: .3 });
+  const matSoft    = new THREE.MeshStandardMaterial({ color: 0xe8eaf0, metalness: .2,  roughness: .6 });
+  const matEmerald = new THREE.MeshStandardMaterial({ color: 0x6ee7b7, metalness: .3,  roughness: .4 });
+  const matRose    = new THREE.MeshStandardMaterial({ color: 0xfb7185, metalness: .3,  roughness: .4 });
+
+  const objects = [];
+
+  // 1) Floating coins
+  const coinGeo = new THREE.CylinderGeometry(0.55, 0.55, 0.12, 48);
+  for (let i = 0; i < 7; i++) {
+    const m = i % 2 === 0 ? matIndigo : matViolet;
+    const coin = new THREE.Mesh(coinGeo, m.clone());
+    coin.position.set((Math.random()-.5)*18, (Math.random()-.5)*12, (Math.random()-.5)*8 - 2);
+    coin.rotation.set(Math.random(), Math.random(), Math.random());
+    coin.userData = {
+      rotSpeed: new THREE.Vector3((Math.random()-.5)*.005, (Math.random()-.5)*.012, (Math.random()-.5)*.005),
+      floatPhase: Math.random()*Math.PI*2, floatAmp: .3 + Math.random()*.4, baseY: coin.position.y,
+    };
+    scene.add(coin); objects.push(coin);
+  }
+
+  // 2) Floating candlesticks (green/red)
+  for (let i = 0; i < 6; i++) {
+    const h = 0.8 + Math.random()*1.6;
+    const isUp = Math.random() > 0.45;
+    const stick = new THREE.Mesh(new THREE.BoxGeometry(0.35, h, 0.35), (isUp ? matEmerald : matRose).clone());
+    stick.position.set((Math.random()-.5)*16, (Math.random()-.5)*10, (Math.random()-.5)*6 - 3);
+    stick.rotation.z = (Math.random()-.5)*.6;
+    stick.userData = {
+      rotSpeed: new THREE.Vector3((Math.random()-.5)*.003, (Math.random()-.5)*.006, 0),
+      floatPhase: Math.random()*Math.PI*2, floatAmp: .2 + Math.random()*.3, baseY: stick.position.y,
+    };
+    scene.add(stick); objects.push(stick);
+  }
+
+  // 3) Soft neomorphic spheres
+  const sphereGeo = new THREE.SphereGeometry(0.7, 48, 48);
+  for (let i = 0; i < 4; i++) {
+    const sp = new THREE.Mesh(sphereGeo, matSoft.clone());
+    sp.position.set((Math.random()-.5)*18, (Math.random()-.5)*12, (Math.random()-.5)*6 - 4);
+    sp.userData = {
+      rotSpeed: new THREE.Vector3(0.001, 0.002, 0),
+      floatPhase: Math.random()*Math.PI*2, floatAmp: .5 + Math.random()*.4, baseY: sp.position.y,
+    };
+    scene.add(sp); objects.push(sp);
+  }
+
+  // 4) Hero centerpiece
+  const skyline = new THREE.Group();
+  skyline.position.set(0, 0.2, -6);
+
+  const skylineCount = 9;
+  const skylineWicks = [];
+  for (let i = 0; i < skylineCount; i++) {
+    const isUp = i % 2 === 0;
+    const h = 0.9 + Math.sin(i * 1.2) * 0.6 + Math.random() * 0.6;
+    const body = new THREE.Mesh(
+      new THREE.BoxGeometry(0.45, h, 0.45),
+      new THREE.MeshStandardMaterial({
+        color: isUp ? 0x6ee7b7 : 0xfb7185,
+        metalness: 0.5, roughness: 0.25,
+        transparent: true, opacity: 0.78,
+      })
+    );
+    const wick = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.04, 0.04, h + 0.7, 12),
+      new THREE.MeshStandardMaterial({
+        color: isUp ? 0x34d399 : 0xf43f5e, metalness: .4, roughness: .35,
+        transparent: true, opacity: 0.65,
+      })
+    );
+    const x = (i - (skylineCount - 1) / 2) * 0.75;
+    body.position.set(x, h / 2, 0);
+    wick.position.set(x, h / 2, 0);
+    skyline.add(body); skyline.add(wick);
+    skylineWicks.push({ body, baseH: h, x, phase: Math.random() * Math.PI * 2 });
+  }
+  scene.add(skyline);
+
+  // ---- Mouse parallax ----
+  const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+  window.addEventListener("mousemove", (e) => {
+    mouse.tx = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.ty = -((e.clientY / window.innerHeight) * 2 - 1);
+  });
+
+  // Scroll
+  let scrollY = 0;
+  window.addEventListener("scroll", () => { scrollY = window.scrollY; });
+
+  window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // Theme reactive fog/lights
+  window.addEventListener("themechange", (e) => {
+    const dark = e.detail.dark;
+    scene.fog.color.copy(dark ? FOG_DARK : FOG_LIGHT);
+    ambient.intensity = dark ? 0.45 : 0.85;
+    keyLight.intensity = dark ? 0.7 : 1.1;
+    fillIndigo.intensity = dark ? 2.2 : 1.4;
+    fillViolet.intensity = dark ? 1.8 : 1.0;
+  });
+
+  const clock = new THREE.Clock();
+  function animate() {
+    const t = clock.getElapsedTime();
+
+    mouse.x += (mouse.tx - mouse.x) * 0.05;
+    mouse.y += (mouse.ty - mouse.y) * 0.05;
+
+    camera.position.x = mouse.x * 1.6;
+    camera.position.y = mouse.y * 1.0 + scrollY * 0.0015;
+    camera.lookAt(0, 0, 0);
+
+    objects.forEach((obj) => {
+      obj.rotation.x += obj.userData.rotSpeed.x;
+      obj.rotation.y += obj.userData.rotSpeed.y;
+      obj.rotation.z += obj.userData.rotSpeed.z;
+      obj.position.y = obj.userData.baseY + Math.sin(t + obj.userData.floatPhase) * obj.userData.floatAmp;
+    });
+
+    skyline.rotation.y = Math.sin(t * 0.25) * 0.6 + t * 0.05;
+    skyline.position.y = 0.2 + Math.sin(t * 0.5) * 0.15;
+    skylineWicks.forEach((w, i) => {
+      const s = 1 + Math.sin(t * 1.2 + w.phase) * 0.12;
+      w.body.scale.y = s;
+      w.body.position.y = (w.baseH * s) / 2;
+    });
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+
+<script>
+  // ----- Theme toggle -----
+  const themeBtn = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const setTheme = (dark) => {
+    document.documentElement.classList.toggle('dark', dark);
+    themeIcon.textContent = dark ? 'light_mode' : 'dark_mode';
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { dark } }));
+    localStorage.setItem('bettrad-theme', dark ? 'dark' : 'light');
+  };
+  setTheme(localStorage.getItem('bettrad-theme') === 'dark');
+  themeBtn.addEventListener('click', () =>
+    setTheme(!document.documentElement.classList.contains('dark'))
+  );
+
+  // ----- Cursor glow -----
+  const glow = document.getElementById('cursor-glow');
+  let glowVisible = false;
+  window.addEventListener('mousemove', (e) => {
+    glow.style.left = `${e.clientX}px`;
+    glow.style.top  = `${e.clientY}px`;
+    if (!glowVisible) { glow.style.opacity = '1'; glowVisible = true; }
+  });
+  window.addEventListener('mouseleave', () => { glow.style.opacity = '0'; glowVisible = false; });
+
+  // ----- 3D tilt cards -----
+  const MAX_TILT = 10;
+  document.querySelectorAll(".tilt-card").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      const rx = (py - 0.5) * -2 * MAX_TILT;
+      const ry = (px - 0.5) * 2 * MAX_TILT;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      card.style.setProperty("--mx", `${px * 100}%`);
+      card.style.setProperty("--my", `${py * 100}%`);
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "perspective(900px) rotateX(0) rotateY(0)";
+    });
+  });
+
+  // ----- Magnetic CTA -----
+  const cta = document.getElementById("cta-btn");
+  cta.addEventListener("mousemove", (e) => {
+    const r = cta.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width / 2;
+    const y = e.clientY - r.top  - r.height / 2;
+    cta.style.transform = `translate(${x*0.15}px, ${y*0.25}px) translateZ(10px)`;
+  });
+  cta.addEventListener("mouseleave", () => { cta.style.transform = ""; });
+
+  // ----- Reveal on scroll -----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+  // ----- Animated counters -----
+  const formatCompact = (n) => {
+    if (n >= 1e9) return (n/1e9).toFixed(n>=1e10?0:1).replace(/\.0$/, "") + "B";
+    if (n >= 1e6) return (n/1e6).toFixed(n>=1e7?0:1).replace(/\.0$/, "") + "M";
+    if (n >= 1e3) return (n/1e3).toFixed(0) + "K";
+    return Math.round(n).toString();
+  };
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+  const animateCounter = (el) => {
+    const target = parseFloat(el.dataset.target);
+    const prefix = el.dataset.prefix || "";
+    const suffix = el.dataset.suffix || "";
+    const fmt = el.dataset.format;
+    const dur = 1800;
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const v = target * easeOutCubic(p);
+      el.textContent = prefix + (fmt === "compact" ? formatCompact(v) : Math.round(v).toLocaleString()) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = prefix + (fmt === "compact" ? formatCompact(target) : target.toLocaleString()) + suffix;
+    };
+    requestAnimationFrame(tick);
+  };
+  const animateRating = (el) => {
+    const target = 4.8, dur = 1800, start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const v = target * easeOutCubic(p);
+      el.textContent = `${v.toFixed(1)}/5 Excellent`;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = `4.8/5 Excellent`;
+    };
+    requestAnimationFrame(tick);
+  };
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (entry.target.classList.contains("counter")) animateCounter(entry.target);
+        else if (entry.target.classList.contains("counter-rating")) animateRating(entry.target);
+        counterIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll(".counter, .counter-rating").forEach((el) => counterIO.observe(el));
+</script>
+</body>
+</html>
